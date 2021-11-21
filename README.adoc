@@ -1,0 +1,13 @@
+= README du projet MyMeds backend
+
+== Base de données sous Docker
+
+[source,shell]
+----
+docker run -d --name postgres -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=postgres -e PGDATA=/var/lib/postgresql/data/pgdata -v </repertoire>:/var/lib/postgresql/data postgres:13-alpine
+----
+
+== Features
+
+* Récupérer les pharmacies des utilisateurs
+* Associer des tags à des médicaments
