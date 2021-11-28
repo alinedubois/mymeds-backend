@@ -14,7 +14,7 @@ public class PharmaciesRest {
         this.recuperationDeLaPharmacie = recuperationDeLaPharmacie;
     }
 
-    @GetMapping("/api/pharmacies/{emailUtilisateur}")
+    @GetMapping("/api/v1/pharmacies/{emailUtilisateur}")
     public ResponseEntity<Pharmacie> recupererPourUtilisateur(String emailUtilisateur) {
         return ResponseEntity.ok(this.recuperationDeLaPharmacie.recupererPourUtilisateur(emailUtilisateur));
     }
