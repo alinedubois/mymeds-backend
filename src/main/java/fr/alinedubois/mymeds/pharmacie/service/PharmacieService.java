@@ -1,11 +1,12 @@
 package fr.alinedubois.mymeds.pharmacie.service;
 
-import fr.alinedubois.mymeds.pharmacie.repository.BoiteDeMedicament;
 import fr.alinedubois.mymeds.pharmacie.repository.BoiteDeMedicamentRepository;
 import fr.alinedubois.mymeds.referentiel.domaine.modele.Medicament;
 import fr.alinedubois.mymeds.referentiel.domaine.modele.Referentiel;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Year;
 import java.util.List;
 
 @Service
@@ -20,14 +21,16 @@ public class PharmacieService {
 
     public PharmacieDTO recupererLaPharmacieDeLUtilisateur(String email) {
         PharmacieDTO pharmacieDTO = new PharmacieDTO();
-        List<BoiteDeMedicament> boitesDeMedicaments = this.boiteDeMedicamentRepository.findByUtilisateurId(email);
-        boitesDeMedicaments.forEach(boiteDeMedicament ->{
-            Medicament medicament = referentiel.parIdentifiant(boiteDeMedicament.getMedicamentId());
-            BoiteDeMedicamentDTO boiteDeMedicamentDTO = new BoiteDeMedicamentDTO(
-                    boiteDeMedicament.getId(),
+        List<fr.alinedubois.mymeds.pharmacie.repository.BoiteDeMedicament> boitesDeMedicaments = this.boiteDeMedicamentRepository.findByUtilisateurId(email);
+        boitesDeMedicaments.forEach(entiteBoiteDeMedicament ->{
+            Medicament medicament = referentiel.parIdentifiant(entiteBoiteDeMedicament.getMedicamentId());
+            BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
+                    entiteBoiteDeMedicament.getId(),
                     medicament.nom(),
-                    boiteDeMedicament.getDateDePeremption());
-            pharmacieDTO.ajouter(boiteDeMedicamentDTO);
+                    new DateDePeremption(
+                            entiteBoiteDeMedicament.getDateDePeremption().getMonth(),
+                            Year.of(entiteBoiteDeMedicament.getDateDePeremption().getYear())));
+            pharmacieDTO.ajouter(boiteDeMedicament);
         });
         return pharmacieDTO;
     }

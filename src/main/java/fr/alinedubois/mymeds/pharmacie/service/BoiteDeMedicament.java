@@ -1,13 +1,14 @@
 package fr.alinedubois.mymeds.pharmacie.service;
 
+import java.time.LocalDate;
 import java.util.Date;
 
-public class BoiteDeMedicamentDTO {
+public class BoiteDeMedicament {
     private final String id;
     private final String nom;
-    private final Date dateDePeremption;
+    private final DateDePeremption dateDePeremption;
 
-    public BoiteDeMedicamentDTO(String id, String nom, Date dateDePeremption) {
+    public BoiteDeMedicament(String id, String nom, DateDePeremption dateDePeremption) {
         this.id = id;
         this.nom = nom;
         this.dateDePeremption = dateDePeremption;
@@ -21,7 +22,11 @@ public class BoiteDeMedicamentDTO {
         return nom;
     }
 
-    public Date getDateDePeremption() {
+    public DateDePeremption getDateDePeremption() {
         return dateDePeremption;
+    }
+
+    public boolean estDejaPerime() {
+        return this.dateDePeremption.estDepassee();
     }
 }

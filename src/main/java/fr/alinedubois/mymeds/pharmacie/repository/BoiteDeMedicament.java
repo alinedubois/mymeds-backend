@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,7 +13,7 @@ public class BoiteDeMedicament {
 
     private String id;
     private String medicamentId;
-    private Date dateDePeremption;
+    private LocalDate dateDePeremption;
     private String utilisateurId;
 
     @Id
@@ -35,11 +36,11 @@ public class BoiteDeMedicament {
     }
 
     @Column (name = "date_de_peremption")
-    public Date getDateDePeremption() {
+    public LocalDate getDateDePeremption() {
         return dateDePeremption;
     }
 
-    public void setDateDePeremption(Date dateDePeremption) {
+    public void setDateDePeremption(LocalDate dateDePeremption) {
         this.dateDePeremption = dateDePeremption;
     }
 

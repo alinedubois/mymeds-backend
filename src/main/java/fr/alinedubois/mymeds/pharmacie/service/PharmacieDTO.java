@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PharmacieDTO {
-    private final List<BoiteDeMedicamentDTO> boitesDeMedicaments = new ArrayList<>();
+    private final List<BoiteDeMedicament> boitesDeMedicaments = new ArrayList<>();
 
-    public void ajouter(BoiteDeMedicamentDTO boiteDeMedicamentDTO) {
-        this.boitesDeMedicaments.add(boiteDeMedicamentDTO);
+    public void ajouter(BoiteDeMedicament boiteDeMedicament) {
+        this.boitesDeMedicaments.add(boiteDeMedicament);
     }
 
-    public List<BoiteDeMedicamentDTO> getBoitesDeMedicaments() {
+    public List<BoiteDeMedicament> getBoitesDeMedicaments() {
         return boitesDeMedicaments;
     }
 }
