@@ -29,4 +29,12 @@ public class BoiteDeMedicament {
     public boolean estDejaPerime() {
         return this.dateDePeremption.estDepassee();
     }
+
+    public boolean perimeDansLesTroisMois() {
+        return this.dateDePeremption.estDansLesTroisMois();
+    }
+
+    public boolean perimeDAuDelaDeTroisMois() {
+        return this.dateDePeremption.estAuDelaDeTroisMois();
+    }
 }

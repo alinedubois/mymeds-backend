@@ -52,4 +52,126 @@ class BoiteDeMedicamentTest {
             assertThat(estDejaPerime).isFalse();
         }
     }
+
+    @Nested
+    class PerimeDansLesTroisMois {
+        @Test
+        void doit_retourner_true_lorsque_le_medicament_perime_dans_trois_mois() {
+            LocalDate dansTroisMois = LocalDate.now().plusMonths(3);
+            BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
+                    "0123",
+                    "doliprane",
+                    new DateDePeremption(dansTroisMois.getMonth(), Year.of(dansTroisMois.getYear())));
+
+            boolean perimeDansLesTroisMois = boiteDeMedicament.perimeDansLesTroisMois();
+
+            assertThat(perimeDansLesTroisMois).isTrue();
+        }
+
+        @Test
+        void doit_retourner_true_lorsque_le_medicament_perime_dans_deux_mois() {
+            LocalDate dansDeuxMois = LocalDate.now().plusMonths(2);
+            BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
+                    "0123",
+                    "doliprane",
+                    new DateDePeremption(dansDeuxMois.getMonth(), Year.of(dansDeuxMois.getYear())));
+
+            boolean perimeDansLesTroisMois = boiteDeMedicament.perimeDansLesTroisMois();
+
+            assertThat(perimeDansLesTroisMois).isTrue();
+        }
+
+        @Test
+        void doit_retourner_true_lorsque_le_medicament_perime_dans_un_mois() {
+            LocalDate dansUnMois = LocalDate.now().plusMonths(1);
+            BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
+                    "0123",
+                    "doliprane",
+                    new DateDePeremption(dansUnMois.getMonth(), Year.of(dansUnMois.getYear())));
+
+            boolean perimeDansLesTroisMois = boiteDeMedicament.perimeDansLesTroisMois();
+
+            assertThat(perimeDansLesTroisMois).isTrue();
+        }
+
+        @Test
+        void doit_retourner_false_lorsque_le_medicament_perime_dans_le_mois_courant() {
+            LocalDate moisCourant = LocalDate.now();
+            BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
+                    "0123",
+                    "doliprane",
+                    new DateDePeremption(moisCourant.getMonth(), Year.of(moisCourant.getYear())));
+
+            boolean perimeDansLesTroisMois = boiteDeMedicament.perimeDansLesTroisMois();
+
+            assertThat(perimeDansLesTroisMois).isFalse();
+        }
+
+        @Test
+        void doit_retourner_false_lorsque_le_medicament_perime_dans_dix_mois() {
+            LocalDate dansDixMois = LocalDate.now().plusMonths(10);
+            BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
+                    "0123",
+                    "doliprane",
+                    new DateDePeremption(dansDixMois.getMonth(), Year.of(dansDixMois.getYear())));
+
+            boolean perimeDansLesTroisMois = boiteDeMedicament.perimeDansLesTroisMois();
+
+            assertThat(perimeDansLesTroisMois).isFalse();
+        }
+
+        @Test
+        void doit_retourner_false_lorsque_le_medicament_est_deja_perime() {
+            BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
+                    "0123",
+                    "doliprane",
+                    new DateDePeremption(Month.DECEMBER, Year.of(2020)));
+
+            boolean perimeDansLesTroisMois = boiteDeMedicament.perimeDansLesTroisMois();
+
+            assertThat(perimeDansLesTroisMois).isFalse();
+        }
+    }
+
+    @Nested
+    class PerimeAuDelaDeTroisMois {
+        @Test
+        void doit_retourner_true_lorsque_le_medicament_perime_au_dela_de_trois_mois() {
+            LocalDate dansPlusDeTroisMois = LocalDate.now().plusMonths(4);
+            BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
+                    "0123",
+                    "doliprane",
+                    new DateDePeremption(dansPlusDeTroisMois.getMonth(), Year.of(dansPlusDeTroisMois.getYear())));
+
+            boolean perimeAuDelaDeTroisMois = boiteDeMedicament.perimeDAuDelaDeTroisMois();
+
+            assertThat(perimeAuDelaDeTroisMois).isTrue();
+        }
+
+        @Test
+        void doit_retourner_false_lorsque_le_medicament_est_perime() {
+            BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
+                    "0123",
+                    "doliprane",
+                    new DateDePeremption(Month.DECEMBER, Year.of(2020)));
+
+            boolean perimeAuDelaDeTroisMois = boiteDeMedicament.perimeDAuDelaDeTroisMois();
+
+            assertThat(perimeAuDelaDeTroisMois).isFalse();
+        }
+
+        @Test
+        void doit_retourner_false_lorsque_le_medicament_perime_dans_un_mois() {
+            LocalDate dansUnMois = LocalDate.now().plusMonths(1);
+            BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
+                    "0123",
+                    "doliprane",
+                    new DateDePeremption(dansUnMois.getMonth(), Year.of(dansUnMois.getYear())));
+
+            boolean perimeAuDelaDeTroisMois = boiteDeMedicament.perimeDAuDelaDeTroisMois();
+
+            assertThat(perimeAuDelaDeTroisMois).isFalse();
+        }
+    }
+
 }
