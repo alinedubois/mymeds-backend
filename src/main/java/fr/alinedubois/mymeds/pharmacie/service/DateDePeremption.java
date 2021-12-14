@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
 import java.time.Year;
+import java.time.format.DateTimeFormatter;
 
 public class DateDePeremption {
     private final Month mois;
@@ -12,6 +13,16 @@ public class DateDePeremption {
     public DateDePeremption(Month mois, Year annee) {
         this.mois = mois;
         this.annee = annee;
+    }
+
+    public String date() {
+        return LocalDate.of(annee.getValue(), mois, 1).format(DateTimeFormatter.ofPattern("MM/yyyy"));
+    }
+
+    public Integer nombreDeJoursRestants() {
+        return Math.abs(Period.between(
+                LocalDate.of(annee.getValue(), mois, 1),
+                LocalDate.now()).getDays());
     }
 
     public boolean estDepassee() {

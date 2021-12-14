@@ -1,6 +1,5 @@
 package fr.alinedubois.mymeds.pharmacie.service;
 
-import fr.alinedubois.mymeds.referentiel.domaine.modele.Medicament;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +8,6 @@ import java.time.Month;
 import java.time.Year;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BoiteDeMedicamentTest {
 
@@ -171,6 +169,27 @@ class BoiteDeMedicamentTest {
             boolean perimeAuDelaDeTroisMois = boiteDeMedicament.perimeDAuDelaDeTroisMois();
 
             assertThat(perimeAuDelaDeTroisMois).isFalse();
+        }
+    }
+
+    @Nested
+    class DateDePeremptionTest {
+
+        @Nested
+        class NombreDeJoursRestants {
+
+            @Test
+            void doit_retourner_le_nombre_de_jours_restants_quand_la_date_de_peremption_est_dans_les_trois_mois() {
+                LocalDate dansUnMois = LocalDate.now().plusMonths(1);
+                BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
+                        "0123",
+                        "doliprane",
+                        new DateDePeremption(dansUnMois.getMonth(), Year.of(dansUnMois.getYear())));
+
+                Integer nombreDeJoursRestants = boiteDeMedicament.getDateDePeremption().nombreDeJoursRestants();
+
+                assertThat(nombreDeJoursRestants).isGreaterThan(1).isLessThan(29*3);
+            }
         }
     }
 
