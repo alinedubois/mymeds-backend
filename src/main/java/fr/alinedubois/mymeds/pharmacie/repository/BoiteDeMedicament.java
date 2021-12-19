@@ -5,24 +5,23 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table (name="pharmacie")
 public class BoiteDeMedicament {
 
-    private String id;
+    private Long id;
     private String medicamentId;
     private LocalDate dateDePeremption;
     private String utilisateurId;
 
     @Id
     @Column(name="id")
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
