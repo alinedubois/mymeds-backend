@@ -26,6 +26,7 @@ public class PharmacieResource {
 
     @PostMapping("/{email}/boites-de-medicaments")
     public ResponseEntity ajouterUneBoiteDeMedicament(@RequestBody @Valid AjoutMedicamentDTO ajoutMedicamentDTO) throws URISyntaxException {
+        pharmacieService.ajouterBoiteDeMedicament(ajoutMedicamentDTO, "juillet.aline@gmail.com");
         return ResponseEntity.created(new URI("")).build();
     }
 }

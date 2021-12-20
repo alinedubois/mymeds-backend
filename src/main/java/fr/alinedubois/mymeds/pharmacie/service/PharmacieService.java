@@ -5,7 +5,7 @@ import fr.alinedubois.mymeds.referentiel.domaine.modele.Medicament;
 import fr.alinedubois.mymeds.referentiel.domaine.modele.Referentiel;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import javax.transaction.Transactional;
 import java.time.Year;
 import java.util.List;
 
@@ -33,5 +33,10 @@ public class PharmacieService {
             pharmacieDTO.ajouter(boiteDeMedicament);
         });
         return pharmacieDTO;
+    }
+
+    @Transactional
+    public void ajouterBoiteDeMedicament(AjoutMedicamentDTO ajoutMedicamentDTO, String utilisateurId) {
+        boiteDeMedicamentRepository.insererBoiteDeMedicament("" + ajoutMedicamentDTO.idMedicament(), ajoutMedicamentDTO.dateDePeremption(), utilisateurId);
     }
 }
