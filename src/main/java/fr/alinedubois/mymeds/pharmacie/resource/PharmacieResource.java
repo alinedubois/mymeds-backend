@@ -30,9 +30,8 @@ public class PharmacieResource {
         return ResponseEntity.created(new URI("")).build();
     }
 
-    @DeleteMapping("/{id}/boite-de-medicament")
-    public void supprimerUneBoiteDeMedicament() {
-        pharmacieService.supprimerUneBoiteDeMedicament();
-        return ();
+    @DeleteMapping("/{email}/boites-de-medicaments/{id}")
+    public void supprimerUneBoiteDeMedicament(@PathVariable Long id) {
+        pharmacieService.supprimerUneBoiteDeMedicament(id, "juillet.aline@gmail.com");
     }
 }

@@ -10,8 +10,6 @@ public class PharmacieDTO {
         this.boitesDeMedicaments.add(boiteDeMedicament);
     }
 
-    public void supprimer(BoiteDeMedicament boiteDeMedicament) {this.boitesDeMedicaments.remove(boiteDeMedicament);}
-
     public List<BoiteDeMedicament> getBoitesDeMedicaments() {
         return boitesDeMedicaments;
     }

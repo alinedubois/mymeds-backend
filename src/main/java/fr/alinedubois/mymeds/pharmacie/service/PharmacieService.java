@@ -31,7 +31,6 @@ public class PharmacieService {
                             entiteBoiteDeMedicament.getDateDePeremption().getMonth(),
                             Year.of(entiteBoiteDeMedicament.getDateDePeremption().getYear())));
             pharmacieDTO.ajouter(boiteDeMedicament);
-            pharmacieDTO.supprimer(boiteDeMedicament);
         });
         return pharmacieDTO;
     }
@@ -42,7 +41,7 @@ public class PharmacieService {
     }
 
     @Transactional
-    public void supprimerUneBoiteDeMedicament(Long Id) {
-        boiteDeMedicamentRepository.supprimerBoiteDeMedicament(Id);
+    public void supprimerUneBoiteDeMedicament(Long id, String utilisateurId) {
+        boiteDeMedicamentRepository.supprimerBoiteDeMedicament(id, utilisateurId);
     }
 }
