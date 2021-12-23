@@ -24,4 +24,11 @@ public interface BoiteDeMedicamentRepository extends JpaRepository<BoiteDeMedica
             nativeQuery = true
     )
     void insererBoiteDeMedicament (String medicamentId, LocalDate dateDePeremption, String utilisateurId);
+
+    @Modifying
+    @Query(
+            value = "DELETE FROM pharmacie WHERE id = ?",
+            nativeQuery = true
+    )
+    void supprimerBoiteDeMedicament (Long Id);
 }

@@ -29,4 +29,10 @@ public class PharmacieResource {
         pharmacieService.ajouterBoiteDeMedicament(ajoutMedicamentDTO, "juillet.aline@gmail.com");
         return ResponseEntity.created(new URI("")).build();
     }
+
+    @DeleteMapping("/{id}/boite-de-medicament")
+    public void supprimerUneBoiteDeMedicament() {
+        pharmacieService.supprimerUneBoiteDeMedicament();
+        return ();
+    }
 }
