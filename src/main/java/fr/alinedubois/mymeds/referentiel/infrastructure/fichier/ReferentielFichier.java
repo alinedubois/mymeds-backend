@@ -31,7 +31,7 @@ public class ReferentielFichier implements Referentiel {
     @Override
     public List<Medicament> medicamentsDontLeNomContient(String nom) {
         return this.medicaments().stream()
-                .filter(medicament -> medicament.nom().contains(nom))
+                .filter(medicament -> medicament.nom().toLowerCase().contains(nom.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
