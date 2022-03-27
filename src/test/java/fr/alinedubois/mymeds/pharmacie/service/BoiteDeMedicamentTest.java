@@ -18,6 +18,7 @@ class BoiteDeMedicamentTest {
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     123L,
                     "doliprane",
+                    "doliprane",
                     new DateDePeremption(Month.DECEMBER, Year.of(2020)));
 
             boolean estDejaPerime = boiteDeMedicament.estDejaPerime();
@@ -31,6 +32,7 @@ class BoiteDeMedicamentTest {
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     123L,
                     "doliprane",
+                    "doliprane",
                     new DateDePeremption(moisCourant.getMonth(), Year.of(moisCourant.getYear())));
 
             boolean estDejaPerime = boiteDeMedicament.estDejaPerime();
@@ -42,6 +44,7 @@ class BoiteDeMedicamentTest {
         void doit_retourner_false_lorsque_le_medicament_n_est_pas_perime() {
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     123L,
+                    "doliprane",
                     "doliprane",
                     new DateDePeremption(Month.DECEMBER, Year.of(2030)));
 
@@ -59,6 +62,7 @@ class BoiteDeMedicamentTest {
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     123L,
                     "doliprane",
+                    "doliprane",
                     new DateDePeremption(dansTroisMois.getMonth(), Year.of(dansTroisMois.getYear())));
 
             boolean perimeDansLesTroisMois = boiteDeMedicament.perimeDansLesTroisMois();
@@ -71,6 +75,7 @@ class BoiteDeMedicamentTest {
             LocalDate dansDeuxMois = LocalDate.now().plusMonths(2);
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     123L,
+                    "doliprane",
                     "doliprane",
                     new DateDePeremption(dansDeuxMois.getMonth(), Year.of(dansDeuxMois.getYear())));
 
@@ -85,6 +90,7 @@ class BoiteDeMedicamentTest {
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     123L,
                     "doliprane",
+                    "doliprane",
                     new DateDePeremption(dansUnMois.getMonth(), Year.of(dansUnMois.getYear())));
 
             boolean perimeDansLesTroisMois = boiteDeMedicament.perimeDansLesTroisMois();
@@ -97,6 +103,7 @@ class BoiteDeMedicamentTest {
             LocalDate moisCourant = LocalDate.now();
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     123L,
+                    "doliprane",
                     "doliprane",
                     new DateDePeremption(moisCourant.getMonth(), Year.of(moisCourant.getYear())));
 
@@ -111,6 +118,7 @@ class BoiteDeMedicamentTest {
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     123L,
                     "doliprane",
+                    "doliprane",
                     new DateDePeremption(dansDixMois.getMonth(), Year.of(dansDixMois.getYear())));
 
             boolean perimeDansLesTroisMois = boiteDeMedicament.perimeDansLesTroisMois();
@@ -122,6 +130,7 @@ class BoiteDeMedicamentTest {
         void doit_retourner_false_lorsque_le_medicament_est_deja_perime() {
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     123L,
+                    "doliprane",
                     "doliprane",
                     new DateDePeremption(Month.DECEMBER, Year.of(2020)));
 
@@ -139,6 +148,7 @@ class BoiteDeMedicamentTest {
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     123L,
                     "doliprane",
+                    "doliprane",
                     new DateDePeremption(dansPlusDeTroisMois.getMonth(), Year.of(dansPlusDeTroisMois.getYear())));
 
             boolean perimeAuDelaDeTroisMois = boiteDeMedicament.perimeDAuDelaDeTroisMois();
@@ -150,6 +160,7 @@ class BoiteDeMedicamentTest {
         void doit_retourner_false_lorsque_le_medicament_est_perime() {
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     123L,
+                    "doliprane",
                     "doliprane",
                     new DateDePeremption(Month.DECEMBER, Year.of(2020)));
 
@@ -163,6 +174,7 @@ class BoiteDeMedicamentTest {
             LocalDate dansUnMois = LocalDate.now().plusMonths(1);
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     123L,
+                    "doliprane",
                     "doliprane",
                     new DateDePeremption(dansUnMois.getMonth(), Year.of(dansUnMois.getYear())));
 
@@ -183,6 +195,7 @@ class BoiteDeMedicamentTest {
                 LocalDate dansUnMois = LocalDate.now().plusMonths(1);
                 BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                         123L,
+                        "doliprane",
                         "doliprane",
                         new DateDePeremption(dansUnMois.getMonth(), Year.of(dansUnMois.getYear())));
 

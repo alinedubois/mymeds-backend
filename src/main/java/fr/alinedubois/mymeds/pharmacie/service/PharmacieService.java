@@ -26,6 +26,7 @@ public class PharmacieService {
             Medicament medicament = referentiel.parIdentifiant(entiteBoiteDeMedicament.getMedicamentId());
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
                     entiteBoiteDeMedicament.getId(),
+                    entiteBoiteDeMedicament.getMedicamentId(),
                     medicament.nom(),
                     new DateDePeremption(
                             entiteBoiteDeMedicament.getDateDePeremption().getMonth(),
