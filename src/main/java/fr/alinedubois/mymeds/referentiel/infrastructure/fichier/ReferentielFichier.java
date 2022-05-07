@@ -37,10 +37,11 @@ public class ReferentielFichier implements Referentiel {
 
     private List<Medicament> medicaments() {
         if (this.medicaments.isEmpty()) {
-            try {
-                InputStream fichierDesMedicamentsInputStream = fichierDesMedicaments.getInputStream();
-                BufferedReader lecteurDuFichier = new BufferedReader(
-                        new InputStreamReader(fichierDesMedicamentsInputStream, StandardCharsets.ISO_8859_1));
+            try (
+                    InputStream fichierDesMedicamentsInputStream = fichierDesMedicaments.getInputStream();
+                    BufferedReader lecteurDuFichier = new BufferedReader(
+                            new InputStreamReader(fichierDesMedicamentsInputStream, StandardCharsets.ISO_8859_1));
+            ) {
                 Stream<String> lignesDuFichier = lecteurDuFichier.lines();
                 List<Medicament> medicaments = lignesDuFichier
                         .map(line -> {
@@ -48,9 +49,6 @@ public class ReferentielFichier implements Referentiel {
                             return new Medicament(colonnes[0], colonnes[1], colonnes[2], colonnes[3], colonnes[11]);
                         })
                         .collect(Collectors.toList());
-                lignesDuFichier.close();
-                lecteurDuFichier.close();
-                fichierDesMedicamentsInputStream.close();
                 this.medicaments = medicaments;
             } catch (IOException exception) {
                 return Collections.emptyList();

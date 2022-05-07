@@ -21,7 +21,8 @@ public class PharmacieService {
 
     public PharmacieDTO recupererLaPharmacieDeLUtilisateur(String email) {
         PharmacieDTO pharmacieDTO = new PharmacieDTO();
-        List<fr.alinedubois.mymeds.pharmacie.repository.BoiteDeMedicament> boitesDeMedicaments = this.boiteDeMedicamentRepository.findByUtilisateurId(email);
+        List<fr.alinedubois.mymeds.pharmacie.repository.BoiteDeMedicament> boitesDeMedicaments =
+                this.boiteDeMedicamentRepository.findByUtilisateurId(email);
         boitesDeMedicaments.forEach(entiteBoiteDeMedicament ->{
             Medicament medicament = referentiel.parIdentifiant(entiteBoiteDeMedicament.getMedicamentId());
             BoiteDeMedicament boiteDeMedicament = new BoiteDeMedicament(
