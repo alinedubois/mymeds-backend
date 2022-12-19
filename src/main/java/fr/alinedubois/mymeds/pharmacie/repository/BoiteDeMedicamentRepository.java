@@ -31,4 +31,11 @@ public interface BoiteDeMedicamentRepository extends JpaRepository<BoiteDeMedica
             nativeQuery = true
     )
     void supprimerBoiteDeMedicament (Long id, String utilisateurId);
+
+    @Query(
+            value = "SELECT * FROM pharmacie WHERE medicament_id = ?",
+            nativeQuery = true
+    )
+    List<BoiteDeMedicament> findByMedicamentId(String medicamentId);
+
 }

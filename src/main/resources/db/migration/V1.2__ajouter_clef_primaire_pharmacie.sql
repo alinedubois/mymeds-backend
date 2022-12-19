@@ -1,1 +1,0 @@
-alter table pharmacie add column id serial not null primary key;

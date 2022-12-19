@@ -29,10 +29,11 @@ public class ReferentielFichier implements Referentiel {
     }
 
     @Override
-    public List<Medicament> medicamentsDontLeNomContient(String nom) {
+    public Medicament parIdentifiant(String identifiant) {
         return this.medicaments().stream()
-                .filter(medicament -> medicament.nom().toLowerCase().contains(nom.toLowerCase()))
-                .collect(Collectors.toList());
+                .filter(medicament -> medicament.identifiant().equals(identifiant))
+                .findFirst()
+                .orElseThrow(() -> new MedicamentNonExistant());
     }
 
     private List<Medicament> medicaments() {
@@ -58,10 +59,9 @@ public class ReferentielFichier implements Referentiel {
     }
 
     @Override
-    public Medicament parIdentifiant(String identifiant) {
+    public List<Medicament> medicamentsDontLeNomContient(String nom) {
         return this.medicaments().stream()
-                .filter(medicament -> medicament.identifiant().equals(identifiant))
-                .findFirst()
-                .orElseThrow(() -> new MedicamentNonExistant());
+                .filter(medicament -> medicament.nom().toLowerCase().contains(nom.toLowerCase()))
+                .collect(Collectors.toList());
     }
 }

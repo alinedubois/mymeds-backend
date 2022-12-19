@@ -3,9 +3,9 @@ package fr.alinedubois.mymeds.pharmacie.service;
 import fr.alinedubois.mymeds.pharmacie.repository.BoiteDeMedicamentRepository;
 import fr.alinedubois.mymeds.referentiel.domaine.modele.Medicament;
 import fr.alinedubois.mymeds.referentiel.domaine.modele.Referentiel;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.time.Year;
 import java.util.List;
 

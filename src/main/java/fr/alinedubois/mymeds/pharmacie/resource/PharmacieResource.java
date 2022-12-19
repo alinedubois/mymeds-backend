@@ -3,12 +3,12 @@ package fr.alinedubois.mymeds.pharmacie.resource;
 import fr.alinedubois.mymeds.pharmacie.service.AjoutMedicamentDTO;
 import fr.alinedubois.mymeds.pharmacie.service.PharmacieDTO;
 import fr.alinedubois.mymeds.pharmacie.service.PharmacieService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
