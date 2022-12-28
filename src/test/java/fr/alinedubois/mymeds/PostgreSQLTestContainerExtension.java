@@ -1,3 +1,5 @@
+package fr.alinedubois.mymeds;
+
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.testcontainers.containers.PostgreSQLContainer;

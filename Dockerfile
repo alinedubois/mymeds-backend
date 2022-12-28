@@ -2,7 +2,7 @@ FROM arm32v7/maven:3.8.6-eclipse-temurin-17-focal as build
 
 ADD . /app
 WORKDIR /app
-RUN mvn package
+RUN mvn package -DskipTests
 RUN java -Djarmode=layertools -jar ./target/mymeds-backend-0.0.1-SNAPSHOT.jar extract
 
 FROM arm32v7/eclipse-temurin:17-jre as release
