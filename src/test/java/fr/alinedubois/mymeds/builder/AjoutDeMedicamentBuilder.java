@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.time.LocalDate;
+import java.time.temporal.TemporalAmount;
 import java.util.HashMap;
 
 public class AjoutDeMedicamentBuilder {
@@ -22,8 +23,13 @@ public class AjoutDeMedicamentBuilder {
         return new AjoutDeMedicamentBuilder(identifiantDuMedicament);
     }
 
-    public AjoutDeMedicamentBuilder expireDans(int nombreDeMois) {
-        this.dateDePeremption = LocalDate.now().plusMonths(nombreDeMois);
+    public AjoutDeMedicamentBuilder expireDans(TemporalAmount duree) {
+        this.dateDePeremption = LocalDate.now().plus(duree);
+        return this;
+    }
+
+    public AjoutDeMedicamentBuilder expireDepuis(TemporalAmount duree) {
+        this.dateDePeremption = LocalDate.now().minus(duree);
         return this;
     }
 

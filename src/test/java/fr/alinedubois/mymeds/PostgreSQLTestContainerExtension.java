@@ -20,8 +20,8 @@ public class PostgreSQLTestContainerExtension implements BeforeAllCallback {
     public void beforeAll(ExtensionContext extensionContext) throws Exception {
         if (!started.get()) {
             container.start();
+            System.setProperty("spring.datasource.url", "jdbc:postgresql://"+container.getHost()+":"+container.getMappedPort(5432)+"/postgres");
             started.set(true);
         }
-
     }
 }
