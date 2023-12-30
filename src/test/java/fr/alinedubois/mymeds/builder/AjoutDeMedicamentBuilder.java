@@ -1,5 +1,7 @@
 package fr.alinedubois.mymeds.builder;
 
+import fr.alinedubois.mymeds.pharmacie.service.AjoutMedicamentDTO;
+import fr.alinedubois.mymeds.pharmacie.service.PharmacieService;
 import net.minidev.json.JSONObject;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -44,6 +46,15 @@ public class AjoutDeMedicamentBuilder {
                     put("idMedicament", builder.identifiantDuMedicament);
                     put("dateDePeremption", builder.dateDePeremption.toString());
                 }}).toString())
-                .exchange();
+                .exchange()
+                .expectStatus()
+                .is2xxSuccessful();
+    }
+
+    public void ajouter(PharmacieService pharmacieService) {
+        AjoutMedicamentDTO ajoutMedicamentDTO = new AjoutMedicamentDTO();
+        ajoutMedicamentDTO.setIdMedicament(identifiantDuMedicament);
+        ajoutMedicamentDTO.setDateDePeremption(dateDePeremption);
+        pharmacieService.ajouterBoiteDeMedicament(ajoutMedicamentDTO, "juillet.aline@gmail.com");
     }
 }

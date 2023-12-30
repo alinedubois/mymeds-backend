@@ -40,4 +40,11 @@ public class BoiteDeMedicament {
     public boolean perimeDAuDelaDeTroisMois() {
         return this.dateDePeremption.estAuDelaDeTroisMois();
     }
+
+    public String texteDePeremption() {
+        if (this.estDejaPerime()) {
+            return this.getNom() + " périmé depuis le " + this.getDateDePeremption().date();
+        }
+        return this.getNom() + " périme le " + this.getDateDePeremption().date();
+    }
 }
