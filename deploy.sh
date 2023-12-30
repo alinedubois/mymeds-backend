@@ -1,6 +1,5 @@
 #!/bin/bash
 
-git pull
 docker build -t alinedubois/mymeds:latest .
 docker rm -v -f postgres | true
 docker rm -v -f mymeds | true
