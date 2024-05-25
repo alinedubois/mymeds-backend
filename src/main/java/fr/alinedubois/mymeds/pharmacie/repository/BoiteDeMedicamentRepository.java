@@ -38,4 +38,20 @@ public interface BoiteDeMedicamentRepository extends JpaRepository<BoiteDeMedica
     )
     List<BoiteDeMedicament> findByMedicamentId(String medicamentId);
 
+    @Modifying
+    @Query(
+            value = """
+                    update pharmacie
+                    set date_de_peremption = ?2,
+                        medicament_id = ?3
+                    where id = ?1 and utilisateur_id = ?4
+                    """,
+            nativeQuery = true
+    )
+    void modifierBoiteDeMedicament (Long id,
+                                    LocalDate dateDePeremption,
+                                    Long medicamentId,
+                                    String utilisateurId);
+
+
 }

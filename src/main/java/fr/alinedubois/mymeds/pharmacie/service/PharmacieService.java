@@ -1,11 +1,13 @@
 package fr.alinedubois.mymeds.pharmacie.service;
 
+import fr.alinedubois.mymeds.pharmacie.controller.CaracteristiquesMedicamentDTO;
 import fr.alinedubois.mymeds.pharmacie.repository.BoiteDeMedicamentRepository;
 import fr.alinedubois.mymeds.referentiel.domaine.modele.Medicament;
 import fr.alinedubois.mymeds.referentiel.domaine.modele.Referentiel;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.Year;
 import java.util.List;
 
@@ -38,12 +40,20 @@ public class PharmacieService {
     }
 
     @Transactional
-    public void ajouterBoiteDeMedicament(AjoutMedicamentDTO ajoutMedicamentDTO, String utilisateurId) {
-        boiteDeMedicamentRepository.insererBoiteDeMedicament("" + ajoutMedicamentDTO.idMedicament(), ajoutMedicamentDTO.dateDePeremption(), utilisateurId);
+    public void ajouterBoiteDeMedicament(CaracteristiquesMedicamentDTO caracteristiquesMedicamentDTO, String utilisateurId) {
+        boiteDeMedicamentRepository.insererBoiteDeMedicament("" + caracteristiquesMedicamentDTO.idMedicament(), caracteristiquesMedicamentDTO.dateDePeremption(), utilisateurId);
     }
 
     @Transactional
     public void supprimerUneBoiteDeMedicament(Long id, String utilisateurId) {
         boiteDeMedicamentRepository.supprimerBoiteDeMedicament(id, utilisateurId);
+    }
+
+    @Transactional
+    public void modifierUneBoiteDeMedicament(Long id,
+                                             LocalDate dateDePeremption,
+                                             Long medicamentId,
+                                             String utilisateurId) {
+        boiteDeMedicamentRepository.modifierBoiteDeMedicament(id, dateDePeremption, medicamentId, utilisateurId);
     }
 }
