@@ -1,4 +1,4 @@
-package fr.alinedubois.mymeds.pharmacie.resource;
+package fr.alinedubois.mymeds.pharmacie.controller;
 
 import fr.alinedubois.mymeds.pharmacie.service.AjoutMedicamentDTO;
 import fr.alinedubois.mymeds.pharmacie.service.PharmacieDTO;
@@ -14,10 +14,10 @@ import java.net.URISyntaxException;
 
 @RestController
 @RequestMapping("/api/v2/pharmacies")
-public class PharmacieResource {
+public class PharmacieController {
     private final PharmacieService pharmacieService;
 
-    public PharmacieResource(PharmacieService pharmacieService) {
+    public PharmacieController(PharmacieService pharmacieService) {
         this.pharmacieService = pharmacieService;
     }
 

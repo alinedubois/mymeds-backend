@@ -1,4 +1,4 @@
-package fr.alinedubois.mymeds.pharmacie.resource;
+package fr.alinedubois.mymeds.pharmacie.controller;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
