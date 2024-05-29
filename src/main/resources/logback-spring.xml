@@ -5,9 +5,9 @@
         </encoder>
     </appender>
 
-    <logger name="org.springframework.security" level="TRACE" />
+    <logger name="org.springframework.security" level="ERROR" />
 
-    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.springframework" level="ERROR"/>
 
     <logger name="fr.alinedubois.mymeds" level="TRACE"/>
 

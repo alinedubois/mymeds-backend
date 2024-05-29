@@ -13,5 +13,6 @@ import java.lang.annotation.*;
 @Documented
 @WithSecurityContext(factory = UtilisateurSecurityContextFactory.class)
 public @interface Utilisateur {
+
 }
 

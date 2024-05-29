@@ -4,32 +4,20 @@ import jakarta.validation.constraints.NotNull;
 
 public class PreferenceDTO {
 
-    private final Long id;
-    private final String utilisateurId;
     @NotNull
-    private final String notificationMail;
+    private final Boolean notificationMail;
     @NotNull
     private final Integer notificationHeure;
     @NotNull
     private final String typeAffichageMedicaments;
 
-    public PreferenceDTO(Long id, String utilisateurId, String notificationMail, Integer notificationHeure, String typeAffichageMedicaments) {
-        this.id = id;
-        this.utilisateurId = utilisateurId;
+    public PreferenceDTO(Boolean notificationMail, Integer notificationHeure, String typeAffichageMedicaments) {
         this.notificationMail = notificationMail;
         this.notificationHeure = notificationHeure;
         this.typeAffichageMedicaments = typeAffichageMedicaments;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getUtilisateurId() {
-        return utilisateurId;
-    }
-
-    public String getNotificationMail() {
+    public Boolean getNotificationMail() {
         return notificationMail;
     }
 

@@ -25,7 +25,7 @@ public interface PreferencesRepository extends JpaRepository<Preferences, Intege
             nativeQuery = true
     )
     void modifierPreferences(String utilisateurId,
-                             String notificationMail,
+                             Boolean notificationMail,
                              Integer notificationHeure,
                              String typeAffichageMedicaments);
 

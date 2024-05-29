@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 public class Preferences {
     private Long id;
     private String utilisateurId;
-    private String notificationMail;
+    private Boolean notificationMail;
     private Integer notificationHeure;
     private String typeAffichageMedicaments;
 
@@ -33,10 +33,10 @@ public class Preferences {
     }
 
     @Column(name = "notification_mail")
-    public String getNotificationMail() {
+    public Boolean getNotificationMail() {
         return notificationMail;
     }
-    public void setNotificationMail(String notificationMail) {
+    public void setNotificationMail(Boolean notificationMail) {
         this.notificationMail = notificationMail;
     }
 

@@ -15,8 +15,16 @@ public class PreferencesServiceImpl implements PreferencesService {
     @Override
     public PreferenceDTO recupererPreferences(String utilisateurId) {
         Preferences preferences = preferencesRepository.recupererPreferences(utilisateurId);
-        PreferenceDTO preferenceDTO = new PreferenceDTO(preferences.getId(),
-                preferences.getUtilisateurId(),
+        if (preferences == null) {
+            PreferenceDTO preferenceParDefaut = new PreferenceDTO(
+                    true,
+                     9,
+                    "ORDRE_ALPHABETIQUE"
+            );
+            return preferenceParDefaut;
+        }
+
+        PreferenceDTO preferenceDTO = new PreferenceDTO(
                 preferences.getNotificationMail(),
                 preferences.getNotificationHeure(),
                 preferences.getTypeAffichageMedicaments());
