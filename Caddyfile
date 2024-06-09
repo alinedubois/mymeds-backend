@@ -1,4 +1,29 @@
+(cors) {
+        @cors_preflight{args.0} method OPTIONS
+        @cors{args.0} header Origin {args.0}
+
+        handle @cors_preflight{args.0} {
+                header {
+                        Access-Control-Allow-Origin "{args.0}"
+                        Access-Control-Allow-Methods "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+                        Access-Control-Allow-Headers *
+                        Access-Control-Max-Age "3600"
+                        defer   #turn on defer on your header directive to make sure the new header values are set after proxying
+                }
+                respond "" 204
+        }
+
+        handle @cors{args.0} {
+                header {
+                        Access-Control-Allow-Origin "{args.0}"
+                        Access-Control-Expose-Headers *
+                        defer
+                }
+        }
+}
 mymeds.ddns.net {
     reverse_proxy 192.168.1.110:8081
     tls juillet.aline@gmail.com
+
+    import cors https://mymeds.ddns.net
 }
