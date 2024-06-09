@@ -25,5 +25,5 @@ mymeds.ddns.net {
     reverse_proxy 192.168.1.110:8081
     tls juillet.aline@gmail.com
 
-    import cors https://mymeds.ddns.net
+    import cors https://mymeds.netlify.app
 }
