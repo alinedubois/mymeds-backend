@@ -16,17 +16,14 @@ public interface PreferencesRepository extends JpaRepository<Preferences, Intege
     @Modifying
     @Query(
             value = """
-                    update preference
-                    set notification_heure = ?3,
-                        notification_mail = ?2,
-                        type_affichage_medicaments = ?4
-                    where utilisateur_id = ?1
+                    insert into preference (notification_mail, notification_heure, type_affichage_medicaments, utilisateur_id) 
+                    values (?, ?, ?, ?)
                     """,
             nativeQuery = true
     )
-    void modifierPreferences(String utilisateurId,
-                             Boolean notificationMail,
-                             Integer notificationHeure,
-                             String typeAffichageMedicaments);
+    void modifierPreferences(Boolean notificationMail,
+                             String notificationHeure,
+                             String typeAffichageMedicaments,
+                             String utilisateurId);
 
 }

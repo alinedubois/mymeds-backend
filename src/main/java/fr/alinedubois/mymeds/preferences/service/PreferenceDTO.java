@@ -7,11 +7,11 @@ public class PreferenceDTO {
     @NotNull
     private final Boolean notificationMail;
     @NotNull
-    private final Integer notificationHeure;
+    private final String notificationHeure;
     @NotNull
     private final String typeAffichageMedicaments;
 
-    public PreferenceDTO(Boolean notificationMail, Integer notificationHeure, String typeAffichageMedicaments) {
+    public PreferenceDTO(Boolean notificationMail, String notificationHeure, String typeAffichageMedicaments) {
         this.notificationMail = notificationMail;
         this.notificationHeure = notificationHeure;
         this.typeAffichageMedicaments = typeAffichageMedicaments;
@@ -21,7 +21,7 @@ public class PreferenceDTO {
         return notificationMail;
     }
 
-    public Integer getNotificationHeure() {
+    public String getNotificationHeure() {
         return notificationHeure;
     }
 

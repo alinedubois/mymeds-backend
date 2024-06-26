@@ -11,7 +11,7 @@ public class Preferences {
     private Long id;
     private String utilisateurId;
     private Boolean notificationMail;
-    private Integer notificationHeure;
+    private String notificationHeure;
     private String typeAffichageMedicaments;
 
     @Id
@@ -41,10 +41,10 @@ public class Preferences {
     }
 
     @Column(name = "notification_heure")
-    public Integer getNotificationHeure() {
+    public String getNotificationHeure() {
         return notificationHeure;
     }
-    public void setNotificationHeure(Integer notificationHeure) {
+    public void setNotificationHeure(String notificationHeure) {
         this.notificationHeure = notificationHeure;
     }
 

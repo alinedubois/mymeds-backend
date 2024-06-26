@@ -2,6 +2,7 @@ package fr.alinedubois.mymeds.preferences.service;
 
 import fr.alinedubois.mymeds.preferences.repository.Preferences;
 import fr.alinedubois.mymeds.preferences.repository.PreferencesRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,8 +19,8 @@ public class PreferencesServiceImpl implements PreferencesService {
         if (preferences == null) {
             PreferenceDTO preferenceParDefaut = new PreferenceDTO(
                     true,
-                     9,
-                    "ORDRE_ALPHABETIQUE"
+                     "09:00",
+                    "PAR_ORDRE_ALPHABETIQUE"
             );
             return preferenceParDefaut;
         }
@@ -32,11 +33,12 @@ public class PreferencesServiceImpl implements PreferencesService {
         return preferenceDTO;
     }
 
+    @Transactional
     @Override
     public void modifierPreferences(String utilisateurId, PreferenceDTO preferenceDTO) {
-        preferencesRepository.modifierPreferences(utilisateurId,
-                preferenceDTO.getNotificationMail(),
+        preferencesRepository.modifierPreferences(preferenceDTO.getNotificationMail(),
                 preferenceDTO.getNotificationHeure(),
-                preferenceDTO.getTypeAffichageMedicaments());
+                        preferenceDTO.getTypeAffichageMedicaments(),
+                        utilisateurId);
     }
 }
