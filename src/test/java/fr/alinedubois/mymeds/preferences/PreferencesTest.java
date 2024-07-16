@@ -30,7 +30,7 @@ public class PreferencesTest {
                 .json("""
                           {
                             "notificationMail" : true,
-                            "notificationHeure" : 9,
+                            "notificationHeure" : "09:00",
                             "typeAffichageMedicaments" : "%s"
                           }
                 """.formatted(TypeAffichageMedicaments.PAR_ORDRE_ALPHABETIQUE));
@@ -47,7 +47,7 @@ public class PreferencesTest {
                 .bodyValue("""
                         {
                             "notificationMail" : false,
-                            "notificationHeure" : 10,
+                            "notificationHeure" : "10:00",
                             "typeAffichageMedicaments" : "%s"
                           }
                         """.formatted(TypeAffichageMedicaments.PAR_DATE_DE_PEREMPTION))
@@ -69,7 +69,7 @@ public class PreferencesTest {
                 .json("""
                           {
                             "notificationMail" : false,
-                            "notificationHeure" : 10,
+                            "notificationHeure" : "10:00",
                             "typeAffichageMedicaments" : "%s"
                           }
                 """.formatted(TypeAffichageMedicaments.PAR_DATE_DE_PEREMPTION));

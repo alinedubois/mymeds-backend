@@ -8,22 +8,13 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "preference")
 public class Preferences {
-    private Long id;
     private String utilisateurId;
     private Boolean notificationMail;
     private String notificationHeure;
     private String typeAffichageMedicaments;
 
+
     @Id
-    @Column(name="id")
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
     @Column(name = "utilisateur_id")
     public String getUtilisateurId() {
         return utilisateurId;
